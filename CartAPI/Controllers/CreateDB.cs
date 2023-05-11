@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CartAPI.Controllers
 {
-    [Route("/")]
+    [Route("api/")]
     [ApiController]
-    public class Test : ControllerBase
+    public class CreateDB : ControllerBase
     {
         [HttpOptions]
         public string CreateDatas()
