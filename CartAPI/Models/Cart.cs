@@ -1,11 +1,16 @@
-﻿namespace CartAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CartAPI.Models
 {
     public class Cart
     {
-        public int IdCart { get; set; }
-        public string ProductName { get; set; } = string.Empty;
-        public double ProductPrice { get; set; }
-        public int Amount { get; set; }
-        public string Description { get; set; } = string.Empty;
+        [Key]
+        public int Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public int UserId { get; set; }
+        public virtual User? Usuario { get; set; }
+        public virtual ICollection<CartItens>? Itens { get; set; }
+        public int? CupomId { get; set; }
+        public virtual Cupom? Cupom { get; set; }
     }
 }
