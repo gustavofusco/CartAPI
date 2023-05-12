@@ -50,10 +50,10 @@ cd CARTAPI
 Configure a conexão com o SQL Server no arquivo DataContext.cs:
 ```csharp
  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=.\\SQLSERVER;Database=cartapidb;Trusted_Connection=true;TrustServerCertificate=true;");
-        }
+ {
+     base.OnConfiguring(optionsBuilder);
+     optionsBuilder.UseSqlServer("Server=.\\SQLSERVER;Database=cartapidb;Trusted_Connection=true;TrustServerCertificate=true;");
+ }
 ```
 
 Substitua myServerName, myInstanceName, myDataBase, myUsername e myPassword com as informações de conexão do seu SQL Server.
