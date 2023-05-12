@@ -39,7 +39,7 @@ SQL Server Express ou Superior
 Como executar
 Clone este repositório em sua máquina:
 ```
-git clone https://github.com/seu-usuario/CARTAPI.git
+git clone https://github.com/gustavofusco/CartAPI.git
 ```
 
 Navegue até o diretório do projeto:
@@ -47,11 +47,13 @@ Navegue até o diretório do projeto:
 cd CARTAPI
 ```
 
-Configure a conexão com o SQL Server no arquivo appsettings.json:
+Configure a conexão com o SQL Server no arquivo DataContext.cs:
 ```
-"ConnectionStrings": {
-  "CARTAPIContext": "Server=myServerName\\myInstanceName;Database=myDataBase;User Id=myUsername;Password=myPassword;"
-}
+ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer("Server=.\\SQLSERVER;Database=cartapidb;Trusted_Connection=true;TrustServerCertificate=true;");
+        }
 ```
 
 Substitua myServerName, myInstanceName, myDataBase, myUsername e myPassword com as informações de conexão do seu SQL Server.
@@ -61,7 +63,8 @@ Execute a API:
 dotnet run
 ```
 
-Acesse a API em seu navegador ou ferramenta de teste de API, usando a URL https://localhost:5298
+Acesse a API em seu navegador ou ferramenta de teste de API, usando a URL https://localhost:5298 ou pelo próprio Swagger http://localhost:5298/swagger/index.html
+
 Como usar
 Para usar a API CARTAPI, consulte a documentação da API para obter informações sobre os endpoints disponíveis e como usá-los.
 
@@ -71,10 +74,5 @@ Consulte a documentação da API em DOCUMENTAÇÃO.md.
 Contribuição
 Se você deseja contribuir com a API CARTAPI, por favor, siga estas instruções:
 
-Faça um fork deste repositório
-Crie uma nova branch com sua contribuição: git checkout -b minha-contribuicao
-Faça o commit das suas alterações: git commit -am 'Adicionando minha contribuição'
-Envie a branch para o seu fork: git push origin minha-contribuicao
-Crie um pull request neste repositório
 Licença
-Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.
+Nenhuma Licença foi atribuida a este projeto
