@@ -48,7 +48,7 @@ cd CARTAPI
 ```
 
 Configure a conexão com o SQL Server no arquivo DataContext.cs:
-```
+```csharp
  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
