@@ -11,8 +11,6 @@ CARTAPI é uma API RESTful desenvolvida em .NET 7 que fornece serviços para ger
 - Adição de itens ao carrinho de compras
 - Remoção de itens do carrinho de compras
 - Atualização de itens no carrinho de compras
-- Listagem de todos os carrinhos de compras
-- Busca de carrinho de compras por ID
 - Recuperar o carrinho
 - Gerar totais e subtotais
 - Gerar um JSON com o carrinho completo
