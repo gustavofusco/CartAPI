@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace CartAPI.Services.CartService
+﻿namespace CartAPI.Services.ProductService
 {
     public class ProductService : IProductService
     {
@@ -38,65 +36,81 @@ namespace CartAPI.Services.CartService
             _context = context;
         }
 
+        public void AttProduct(int id, Products produto)
+        {
+            var productToUpdate = _context.Products.FirstOrDefault(p => p.Id == id);
+
+            if (productToUpdate != null)
+            {
+                productToUpdate.Nome = produto.Nome;
+                productToUpdate.Preco = produto.Preco;
+                productToUpdate.Descricao = produto.Descricao;
+                productToUpdate.Estoque = produto.Estoque;
+                productToUpdate.Ativo = produto.Ativo;
+
+                _context.SaveChanges();
+            }
+        }
+
         public async Task<List<Products>> GetAllProducts()
         {   
             var products = await _context.Products.ToListAsync();
             return products;
         }
 
-        public Products GetProductById(int id)
-        {
-            var oneCart = product.Find(x => x.Id == id);
+        //public Products GetProductById(int id)
+        //{
+        //    var oneCart = product.Find(x => x.Id == id);
 
-            if (oneCart is null)
-                return null;
-
-
-            return oneCart;
-        }
-
-        public List<Products> AddProduct(Products cartAdd)
-        {
-            product.Add(cartAdd);
-
-            return product;
-        }
+        //    if (oneCart is null)
+        //        return null;
 
 
-        public List<Products>? UpdateProduct(int id, Products cartPut)
-        {
-             var oneCart = product.Find(x => x.Id == id);
+        //    return oneCart;
+        //}
 
-            if (oneCart is null)
-                return null;
+        //public List<Products> AddProduct(Products cartAdd)
+        //{
+        //    product.Add(cartAdd);
 
-            string[] values = { cartPut.Nome, cartPut.Descricao };
-
-            bool strings = values.Any(x => x.Contains("string"));
-
-            if (strings)
-                return null;
-
-            oneCart.Nome = cartPut.Nome;
-            oneCart.Preco = cartPut.Preco;
-            oneCart.Estoque = cartPut.Estoque;
-            oneCart.Descricao = cartPut.Descricao;
-
-            return product;
-        }
-
-        public List<Products>? DelOneProduct(int id)
-        {
-            var oneCart = product.Find(x => x.Id == id);
-
-            if (oneCart is null)
-                return null;
+        //    return product;
+        //}
 
 
-            product.Remove(oneCart);
+        //public async Task<List<Products>> UpdateProduct(int id, Products productPut)
+        //{
+        //    var oneProduct = await _context.Products.FindAsync(id);
 
-            return product;
-        }
+        //    if (oneProduct is null)
+        //        return null;
+
+        //    string[] values = { cartPut.Nome, cartPut.Descricao };
+
+        //    bool strings = values.Any(x => x.Contains("string"));
+
+        //    if (strings)
+        //        return null;
+
+        //    oneCart.Nome = cartPut.Nome;
+        //    oneCart.Preco = cartPut.Preco;
+        //    oneCart.Estoque = cartPut.Estoque;
+        //    oneCart.Descricao = cartPut.Descricao;
+
+        //    return oneProduct;
+        //}
+
+        //public List<Products>? DelOneProduct(int id)
+        //{
+        //    var oneCart = product.Find(x => x.Id == id);
+
+        //    if (oneCart is null)
+        //        return null;
+
+
+        //    product.Remove(oneCart);
+
+        //    return product;
+        //}
 
         
     }

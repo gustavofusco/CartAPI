@@ -1,11 +1,9 @@
-﻿namespace CartAPI.Services.CartService
+﻿namespace CartAPI.Services.ProductService
 {
     public interface IProductService
     {
         Task<List<Products>> GetAllProducts();
-        Products? GetProductById(int id);
-        List<Products> AddProduct(Products cartAdd);
-        List<Products>? UpdateProduct(int id, Products cartPut);
-        List<Products>? DelOneProduct(int id);
+        // Task<List<Products>> UpdateProduct(int id, Products productPut);
+        void AttProduct(int id, Products produto); // Atualizar valor do produto só quando retornar JSON FINAL
     }
 }
