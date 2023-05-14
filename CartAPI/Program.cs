@@ -3,6 +3,8 @@ global using CartAPI.Data;
 using CartAPI.Services.ProductService;
 using CartAPI.Services.CartService;
 using System.Text.Json.Serialization;
+using CartAPI.Services.UserService;
+using CartAPI.Services.CupomService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +16,10 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICupomService, CupomService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();

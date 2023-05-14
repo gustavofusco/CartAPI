@@ -2,10 +2,10 @@
 {
     public interface ICartService
     {
-        Task<List<Cart>> GetCartById(int id);
+        Task<Cart> GetCart(int idUser);
         Task<Cart> AddItenOnCart(int idUser, int idProduct);
-        Task<Cart> RemoveItenOnCart(int idUser, int idProduct);
         Task<Cart> UpdateProductOnCart(updateProd update);
+        Task<Cart> RemoveItenOnCart(int idUser, int idProduct);
         Task<Cart> DropCart(int idUser);
     }
 

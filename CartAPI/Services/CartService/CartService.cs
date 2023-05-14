@@ -11,10 +11,11 @@ namespace CartAPI.Services.CartService
             _context = context;
         }
 
-        public async Task<List<Cart>> GetCartById(int id)
+        public async Task<Cart> GetCart(int idUser)
         {
-            List<Cart> cartIdUser = await _context.Cart.ToListAsync();
-            return cartIdUser;
+            var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
+
+            return cart;
         }
 
         public async Task<Cart> AddItenOnCart(int idUser, int idProduct)
@@ -147,5 +148,6 @@ namespace CartAPI.Services.CartService
 
             return null;
         }
+
     }
 }
