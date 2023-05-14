@@ -1,4 +1,5 @@
 ﻿using CartAPI.Models;
+using System.Buffers.Text;
 
 namespace CartAPI.Services.CartService
 {
@@ -84,7 +85,7 @@ namespace CartAPI.Services.CartService
 
         public async Task<Cart> RemoveItenOnCart(int idUser, int idProduct)
         {
-            var product = _context.Products.FirstOrDefault(p => p.Id == idProduct);
+            var product = await _context.Products.FindAsync(idProduct);
 
             if (product is null)
                 return null;
@@ -103,10 +104,46 @@ namespace CartAPI.Services.CartService
             return cart;
         }
 
-        public Task<Cart> UpdateProductOnCart(updateProd baseP)
+        public async Task<Cart> UpdateProductOnCart(updateProd baseP)
         {
+            var user = await _context.Users.FindAsync(baseP.IdUser);
+            var product = _context.Products.FirstOrDefault(p => p.Id == baseP.IdProduct);
+            if (product is null || user is null)
+            {
+                return null;
+            }
+
             var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == baseP.IdUser);
-            var cartItemToRemove = cart.Itens.FirstOrDefault(ci => ci.ProdutoId == baseP.IdProduct);
+            var cartItem = cart.Itens?.FirstOrDefault(ci => ci.ProdutoId == baseP.IdProduct);
+
+            if(baseP.Qtd == 0)
+            {
+                await RemoveItenOnCart(baseP.IdUser, baseP.IdProduct);
+            }
+            else
+            {
+                cartItem.Quantidade = baseP.Qtd;
+                cartItem.Subtotal = (decimal)(cartItem.Produto.Preco * baseP.Qtd);
+            }
+
+            _context.Cart.Update(cart);
+            await _context.SaveChangesAsync();
+
+            return cart;
+        }
+
+        public async Task<Cart> DropCart(int idUser)
+        {
+            var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
+            var user = await _context.Users.FindAsync(idUser);
+            var cartItems = _context.Cart.Include(c => c.Itens).ToList();
+            if (cart != null)
+            {
+                _context.Cart.RemoveRange(cartItems); // ACHO QUE VAI DAR ERRO AQUI
+                _context.Cart.Remove(cart);
+                user.CarrinhoId = null;
+                await _context.SaveChangesAsync();
+            }
 
             return null;
         }

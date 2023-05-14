@@ -15,13 +15,6 @@ namespace CartAPI.Controllers
             _cartService = cartService;
         }
 
-        //[HttpPost("{idUser}")]
-        //public int getCartUser(int idUser)
-        //{
-        //    return idUser;
-        //}
-
-
         [HttpPost("{idUser}/{idProduct}")]
         public async Task<ActionResult<Cart>> AddCart(int idUser, int idProduct)
         {
@@ -49,7 +42,7 @@ namespace CartAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<Cart>> UpdateItenOnCart(baseProduct update)
+        public async Task<ActionResult<Cart>> UpdateItenOnCart(updateProd update)
         {
             var result = await _cartService.UpdateProductOnCart(update);
 
@@ -59,6 +52,12 @@ namespace CartAPI.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{idUser}")]
+        public async Task<ActionResult<Cart>> DropCart(int idUser)
+        {
+            await _cartService.DropCart(idUser);
+            return Ok();
+        }
 
     }
 }
