@@ -1,7 +1,4 @@
-﻿using CartAPI.Models;
-using System.Buffers.Text;
-
-namespace CartAPI.Services.CartService
+﻿namespace CartAPI.Services.CartService
 {
     public class CartService : ICartService
     {
@@ -11,9 +8,57 @@ namespace CartAPI.Services.CartService
             _context = context;
         }
 
+        public class CarrinhoFinal : Cart
+        {
+            public decimal Total { get; set; }
+        }
+
         public async Task<Cart> GetCart(int idUser)
         {
             var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
+
+            return cart;
+        }
+        public async Task<Cart> FinishCart(int idUser)
+        {
+            var totalFinal = from c in _context.Cart.Include(c => c.Itens).ThenInclude(ci => ci.Produto)
+                                 where c.UserId == idUser
+                                 select new CarrinhoFinal
+                                 {
+                                     Id = c.Id,
+                                     CreatedAt = c.CreatedAt,
+                                     UserId = c.UserId,
+                                     Usuario = c.Usuario,
+                                     Itens = c.Itens,
+                                     CupomId = c.CupomId,
+                                     Cupom = c.Cupom,
+                                     Total = c.Itens.Sum(ci => ci.Subtotal)
+                                 };
+
+            var cart = await totalFinal.FirstOrDefaultAsync();
+
+            if (cart.CupomId != null) 
+            {
+                var cupom = await _context.Cupons.FindAsync(cart.CupomId);
+                decimal desc = (cart.Total / 100) * cupom.Desconto;
+                cart.Total -= desc; 
+            }
+
+            foreach (var item in cart.Itens)
+            {
+                var produto = await _context.Products.FirstOrDefaultAsync(p => p.Id == item.ProdutoId);
+                if (produto != null)
+                {
+                    produto.Estoque -= item.Quantidade;
+
+                    if (produto.Estoque == 0)
+                        produto.Ativo = false;
+
+                    _context.Products.Update(produto);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
 
             return cart;
         }
@@ -21,7 +66,7 @@ namespace CartAPI.Services.CartService
         public async Task<Cart> AddItenOnCart(int idUser, int idProduct)
         {
             var user = _context.Users.FirstOrDefault(u => u.Id == idUser);
-            var product = _context.Products.FirstOrDefault(p => p.Id == idUser);
+            var product = _context.Products.FirstOrDefault(p => p.Id == idProduct && p.Ativo);
 
             if (product is null || user is null)
             {
@@ -84,9 +129,42 @@ namespace CartAPI.Services.CartService
 
         }
 
+        public async Task<Cart> UpdateProductOnCart(int idUser, int idProduct, int Qtd)
+        {
+            var user = await _context.Users.FindAsync(idUser);
+            var product = _context.Products.FirstOrDefault(p => p.Id == idProduct && p.Ativo);
+            if (product is null || user is null)
+            {
+                return null;
+            }
+
+            if(Qtd > product.Estoque)
+            {
+                return null;
+            }
+
+            var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
+            var cartItem = cart.Itens?.FirstOrDefault(ci => ci.ProdutoId == idProduct);
+
+            if(Qtd == 0)
+            {
+                await RemoveItenOnCart(idUser, idProduct);
+            }
+            else
+            {
+                cartItem.Quantidade = Qtd;
+                cartItem.Subtotal = (decimal)(cartItem.Produto.Preco * Qtd);
+            }
+
+            _context.Cart.Update(cart);
+            await _context.SaveChangesAsync();
+
+            return cart;
+        }
+
         public async Task<Cart> RemoveItenOnCart(int idUser, int idProduct)
         {
-            var product = await _context.Products.FindAsync(idProduct);
+            var product = _context.Products.FirstOrDefault(p => p.Id == idProduct && p.Ativo);
 
             if (product is null)
                 return null;
@@ -101,34 +179,6 @@ namespace CartAPI.Services.CartService
                 _context.SaveChanges();
 
             }
-
-            return cart;
-        }
-
-        public async Task<Cart> UpdateProductOnCart(updateProd baseP)
-        {
-            var user = await _context.Users.FindAsync(baseP.IdUser);
-            var product = _context.Products.FirstOrDefault(p => p.Id == baseP.IdProduct);
-            if (product is null || user is null)
-            {
-                return null;
-            }
-
-            var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == baseP.IdUser);
-            var cartItem = cart.Itens?.FirstOrDefault(ci => ci.ProdutoId == baseP.IdProduct);
-
-            if(baseP.Qtd == 0)
-            {
-                await RemoveItenOnCart(baseP.IdUser, baseP.IdProduct);
-            }
-            else
-            {
-                cartItem.Quantidade = baseP.Qtd;
-                cartItem.Subtotal = (decimal)(cartItem.Produto.Preco * baseP.Qtd);
-            }
-
-            _context.Cart.Update(cart);
-            await _context.SaveChangesAsync();
 
             return cart;
         }
@@ -149,5 +199,6 @@ namespace CartAPI.Services.CartService
             return null;
         }
 
+       
     }
 }
