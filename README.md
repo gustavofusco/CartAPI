@@ -81,7 +81,7 @@ Como usar
 Para usar a API CARTAPI, consulte a documentação da API para obter informações sobre os endpoints disponíveis e como usá-los.
 
 Documentação
-Consulte a documentação da API em DOCUMENTAÇÃO.md.
+Consulte a documentação da API em DOC.md
 
 Contribuição
 Se você deseja contribuir com a API CARTAPI, por favor, siga estas instruções:
