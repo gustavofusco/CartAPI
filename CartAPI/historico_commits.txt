@@ -1,0 +1,99 @@
+commit 406c7d21e083b9a76c82b8ddbffea4ad18bf5fa4
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Mon May 15 10:15:29 2023 -0300
+
+    Adicionado GetFinish e Atualização de Estoque
+
+commit e79ee24bce8e3c3c6a0060478e4fdf8af1e70b9c
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Sat May 13 23:34:05 2023 -0300
+
+    Rotas adicionas (Users, GetCart) e Cupoms finalizado.
+
+commit 01b0df97c210cda033eac1467e4b9efcbd34a755
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Sat May 13 21:33:35 2023 -0300
+
+    Update/Drop Cart finalizados!
+
+commit 6569ba61d37e55cd46a1dd71f580d5128e3b8f44
+Merge: aa74dae 786c385
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Sat May 13 18:51:51 2023 -0300
+
+    Merge branch 'main' of https://github.com/gustavofusco/CartAPI
+
+commit aa74dae4816445c162d98eee4a623518bd030233
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Sat May 13 18:51:43 2023 -0300
+
+    AddProduct/DeleteProduct on Cart finalizado!
+
+commit 786c385cca97759a6eb4c949aa3a30fa67388c4f
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Sat May 13 16:12:15 2023 -0300
+
+    Att Funcionalidades
+
+commit 63201a3b77cf211599676625b499e047c25db50a
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Fri May 12 10:32:52 2023 -0300
+
+    last update readme csharp syntax
+
+commit e756bec20debe7b5815ba08a503e1a3567e535db
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Fri May 12 10:32:08 2023 -0300
+
+    Att readme com csharp syntax
+
+commit 7a842b87dcc245cd60531a98118b06b7768009dd
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Fri May 12 10:30:23 2023 -0300
+
+    Ultima att Readme
+
+commit 843e30465c6ec888ed500beece7ddec6b557e45f
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Fri May 12 10:19:24 2023 -0300
+
+    Migrations criadas
+
+commit e7e86c1ef23cfef8d3eef03f447fbeb164db31f0
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Thu May 11 14:54:03 2023 -0300
+
+    Criando método Interface Cart e adicionando ao Espopo
+
+commit 218db6f94d5b0f4504e1443bf859471d936835c6
+Merge: d0f994e 9b66f4d
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Thu May 11 11:35:22 2023 -0300
+
+    Merge branch 'main' of https://github.com/gustavofusco/CartAPI
+
+commit d0f994ea9a47695674180262f77991e197d00eb2
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Thu May 11 11:34:18 2023 -0300
+
+    Teste de rotas CRUD
+
+commit 9b66f4d1a9fb6ce168d0f8a6c946200f6509679c
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Wed May 10 17:51:00 2023 -0300
+
+    Update README.md
+    
+    Commit ReadME file
+
+commit 8024ff1b6e5378f89dc57b3acab70684c9778f18
+Author: Gustavo Sperandio <gustavo.sperandio25@gmail.com>
+Date:   Tue May 9 16:26:07 2023 -0300
+
+    First Commit
+
+commit 84568f813e6fc993c88c76ccffdeaad95b5db6ba
+Author: Gustavo Sperandio <57372847+gustavofusco@users.noreply.github.com>
+Date:   Tue May 9 16:18:38 2023 -0300
+
+    Initial commit

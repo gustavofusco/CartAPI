@@ -15,12 +15,18 @@ namespace CartAPI.Controllers
             _cupomService = cupomService;
         }
 
+        /// <summary>
+        /// Mostra todos cupons na loja
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<List<Cupom>>> GetAll()
         {
             return await _cupomService.GetAll();
         }
 
+        /// <summary>
+        /// Adiciona um cupom para o carrinho do usuario
+        /// </summary>
         [HttpPost("{codigo}/{idUser}")]
         public async Task<ActionResult<Cupom>> ApplyCupom(string codigo, int idUser)
         {

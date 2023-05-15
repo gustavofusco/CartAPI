@@ -15,7 +15,7 @@
 
         public async Task<Cart> GetCart(int idUser)
         {
-            var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
+            var cart = _context.Cart.Include(c => c.Itens).ThenInclude(ci => ci.Produto).FirstOrDefault(c => c.UserId == idUser);
 
             return cart;
         }
@@ -145,6 +145,7 @@
 
             var cart = _context.Cart.Include(c => c.Itens).FirstOrDefault(c => c.UserId == idUser);
             var cartItem = cart.Itens?.FirstOrDefault(ci => ci.ProdutoId == idProduct);
+
 
             if(Qtd == 0)
             {

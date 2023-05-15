@@ -12,7 +12,9 @@ namespace CartAPI.Controllers
         public ProductController(IProductService productService) {
             _productService = productService;
         }
-
+        /// <summary>
+        /// Imprime todos produtos disponíveis
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<List<Products>>> GetAllProducts()
         {

@@ -15,6 +15,9 @@ namespace CartAPI.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Imprime todos usuarios
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<List<User>>> GetAllUsers()
         {

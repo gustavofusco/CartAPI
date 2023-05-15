@@ -1,9 +1,5 @@
 ﻿using CartAPI.Services.CartService;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using Microsoft.EntityFrameworkCore;
-
 namespace CartAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -16,6 +12,9 @@ namespace CartAPI.Controllers
             _cartService = cartService;
         }
 
+        /// <summary>
+        /// Busca o carrinho de um usuário pelo ID
+        /// </summary>
         [HttpGet("{idUser}")]
         public async Task<ActionResult<Cart>> GetCart(int idUser)
         {
@@ -30,6 +29,9 @@ namespace CartAPI.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Finaliza a compra do usuário e atualiza estoque
+        /// </summary>
         [HttpGet("finish/{idUser}")]
         public async Task<ActionResult<Cart>> FinishCart(int idUser)
         {
@@ -44,6 +46,9 @@ namespace CartAPI.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Adiciona um produto ao carrinho
+        /// </summary>
         [HttpPost("{idUser}/{idProduct}")]
         public async Task<ActionResult<Cart>> AddCart(int idUser, int idProduct)
         {
@@ -53,9 +58,12 @@ namespace CartAPI.Controllers
                 return NotFound("Produto ou Usuário não existe");
             }
 
-            return Ok(result);
+            return Ok($"Produto adicionado ao carrinho de {result.Usuario?.Nome}");
         }
 
+        /// <summary>
+        /// Atualiza a quantidade de itens no carrinho
+        /// </summary>
         [HttpPut("{idUser}/{idProduct}/{Qtd}")]
         public async Task<ActionResult<Cart>> UpdateItenOnCart(int idUser, int idProduct, int Qtd)
         {
@@ -64,9 +72,12 @@ namespace CartAPI.Controllers
             if (result is null)
                 return NotFound("Erro de validação");
 
-            return Ok(result);
+            return Ok($"Quantidade alterada para {Qtd}");
         }
 
+        /// <summary>
+        /// Remove apenas um item do carrinho
+        /// </summary>
         [HttpDelete("{idUser}/{idProduct}")]
         public async Task<ActionResult<Cart>> RemoveItenOnCart(int idUser, int idProduct)
         {
@@ -78,14 +89,17 @@ namespace CartAPI.Controllers
 
             }
 
-            return Ok(result);
+            return Ok($"Produto removido do carrinho");
         }
 
-        [HttpDelete("{idUser}")]
+        /// <summary>
+        /// Deleta o carrinho
+        /// </summary>
+        [HttpDelete("drop/{idUser}")]
         public async Task<ActionResult<Cart>> DropCart(int idUser)
         {
             await _cartService.DropCart(idUser);
-            return Ok();
+            return Ok("Excluido com sucesso!");
         }
 
     }
