@@ -75,7 +75,7 @@ dotnet run
 Acesse a API em seu navegador ou ferramenta de teste de API, usando a URL https://localhost:5298 ou pelo próprio Swagger http://localhost:5298/swagger/index.html
 
 ## Documentação da API
-* [Documentação - CARTAPI]([https://github.com/gustavofusco/CartAPI/edit/main/DOC.md])
+* [Documentação - CARTAPI](https://github.com/gustavofusco/CartAPI/edit/main/DOC.md)
 
 Como usar
 Para usar a API CARTAPI, consulte a documentação da API para obter informações sobre os endpoints disponíveis e como usá-los.
