@@ -61,10 +61,10 @@ Exemplo de resposta:
 
 
 ## Produtos
-Método HTTP: GET 📋
-Endpoint: `/api/Product`
-Parâmetros: Nenhum
-Resposta: Retorna uma lista de todos os produtos, ativos e não ativos
+* Método HTTP: GET 📋
+* Endpoint: `/api/Product`
+* Parâmetros: Nenhum
+* Resposta: Retorna uma lista de todos os produtos, ativos e não ativos
 Exemplo de resposta:
 ```json
 {
@@ -121,10 +121,10 @@ Exemplo de resposta:
 
 
 ## Cupom
-Método HTTP: GET 📋
-Endpoint: `/api/Cupom`
-Parâmetros: Nenhum
-Resposta: Retorna uma lista de todos os cupons
+* Método HTTP: GET 📋
+* Endpoint: `/api/Cupom`
+* Parâmetros: Nenhum
+* Resposta: Retorna uma lista de todos os cupons
 Exemplo de resposta:
 ```json
 {
@@ -152,10 +152,11 @@ Exemplo de resposta:
 }
 ```
 
-Método HTTP: POST 📥
-Endpoint: `/api/Cupom/{codigo}/{idUser}`
-Parâmetros: Código Cupom, Id usuário
-Resposta: Aplica um cupom para o usuario se o nome do cupom estiver correto e se existir um carrinho para o Usuario.
+<br />
+* Método HTTP: POST 📥
+* Endpoint: `/api/Cupom/{codigo}/{idUser}`
+* Parâmetros: Código Cupom, Id usuário
+* Resposta: Aplica um cupom para o usuario se o nome do cupom estiver correto e se existir um carrinho para o Usuario.
 
 Exemplo de requisição:
 ```
@@ -167,12 +168,13 @@ Exemplo de resposta:
 Cupom de 25% aplicado com sucesso!
 ```
 
+<br />
 
 ## Carrinho
-Método HTTP: GET 📋
-Endpoint: `/api/Cart/{idUser}`
-Parâmetros: Id do usuário
-Resposta: Retorna o carrinho completo do usuário caso exista
+* Método HTTP: GET 📋
+* Endpoint: `/api/Cart/{idUser}`
+* Parâmetros: Id do usuário
+* Resposta: Retorna o carrinho completo do usuário caso exista
 Exemplo de resposta:
 ```json
 {
@@ -222,11 +224,12 @@ Exemplo de resposta:
   "cupom": null
 }
 ```
+<br />
 
-Método HTTP: POST 📥
-Endpoint: `/api/Cart/{idUser}/{idProduct}`
-Parâmetros: Id do usuário, Id do produto
-Resposta: Adiciona uma unidade do produto ao carrinho do usuário
+* Método HTTP: POST 📥
+* Endpoint: `/api/Cart/{idUser}/{idProduct}`
+* Parâmetros: Id do usuário, Id do produto
+* Resposta: Adiciona uma unidade do produto ao carrinho do usuário
 
 Exemplo de requisição para adicionar a mesa de jantar:
 ```
@@ -237,12 +240,12 @@ Exemplo de resposta:
 ```
 Produto adicionado ao carrinho de Victor
 ```
+<br />
 
-
-Método HTTP: DELETE ❌
-Endpoint: `/api/Cart/{idUser}/{idProduct}`
-Parâmetros: Id do usuário, Id do produto
-Resposta: Remove uma unidade do produto ao carrinho do usuário
+* Método HTTP: DELETE ❌
+* Endpoint: `/api/Cart/{idUser}/{idProduct}`
+* Parâmetros: Id do usuário, Id do produto
+* Resposta: Remove uma unidade do produto ao carrinho do usuário
 
 Exemplo de requisição para remover a mesa de jantar:
 ```
@@ -253,11 +256,12 @@ Exemplo de resposta:
 ```
 Produto removido do carrinho
 ```
+<br />
 
-Método HTTP: PUT ✏️
-Endpoint: `/api/Cart/{idUser}/{idProduct}/{Qtd}`
-Parâmetros: Id do usuário, Id do produto e a quantidade
-Resposta: Altera a quantidade de itens no carrinho do usuário
+* Método HTTP: PUT ✏️
+* Endpoint: `/api/Cart/{idUser}/{idProduct}/{Qtd}`
+* Parâmetros: Id do usuário, Id do produto e a quantidade
+* Resposta: Altera a quantidade de itens no carrinho do usuário
 
 Exemplo de requisição para remover a mesa de jantar:
 ```
@@ -268,11 +272,11 @@ Exemplo de resposta:
 ```
 Quantidade alterada para 2
 ```
-
-Método HTTP: DELETE ❌
-Endpoint: `/api/Cart/drop/{idUser}`
-Parâmetros: Id do usuário
-Resposta: Deleta o carrinho vinculado ao usuário
+<br />
+* Método HTTP: DELETE ❌
+* Endpoint: `/api/Cart/drop/{idUser}`
+* Parâmetros: Id do usuário
+* Resposta: Deleta o carrinho vinculado ao usuário
 
 Exemplo de requisição para remover a mesa de jantar:
 ```
@@ -283,11 +287,12 @@ Exemplo de resposta:
 ```
 Excluido com sucesso!
 ```
+<br />
 
-Método HTTP: GET 📋
-Endpoint: `/api/Cart/finish/{idUser}`
-Parâmetros: Id do usuário
-Resposta: Retorna o carrinho completo do usuário ja com cupom de desconto aplicado e o JSON para utilizar no front-end
+* Método HTTP: GET 📋
+* Endpoint: `/api/Cart/finish/{idUser}`
+* Parâmetros: Id do usuário
+* Resposta: Retorna o carrinho completo do usuário ja com cupom de desconto aplicado e o JSON para utilizar no front-end
 Exemplo de resposta:
 ```json
 {
@@ -350,4 +355,5 @@ Exemplo de resposta:
 }
 ```
 
+<br />
 Essa é uma documentação básica para as requisições relacionadas a produtos na API
