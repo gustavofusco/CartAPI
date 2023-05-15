@@ -23,10 +23,10 @@ Esta documentação está destinada para entender todos os processos e seus func
 ## Usuário
 ### Requisições
 
-Método HTTP: GET 📋
-Endpoint: `/api/User`
-Parâmetros: Nenhum
-Resposta: Retorna uma lista de todos os produtos
+* Método HTTP: GET 📋
+* Endpoint: `/api/User`
+* Parâmetros: Nenhum
+* Resposta: Retorna uma lista de todos os produtos
 Exemplo de resposta:
 
 ```json
