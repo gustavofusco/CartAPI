@@ -2,10 +2,6 @@
 Esta documentação está destinada para entender todos os processos e seus funcionamentos
 <br />
 <p align="center">
-  <a href="https://github.com/gustavofusco/acme-inc">
-    <img src="src/imgs/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
   <h3 align="center">CART API</h3>
 
   <p align="center">
@@ -21,7 +17,7 @@ Esta documentação está destinada para entender todos os processos e seus func
 ## Sumário
 📌 [Usuários](#usuarios)<br />
 📌 [Produtos](#produtos)<br />
-📌 [Cupom](#cupons)<br />
+📌 [Cupom](#cupom)<br />
 📌 [Carrinho](#carrinho) <br />
 
 ## Usuário
@@ -122,6 +118,7 @@ Exemplo de resposta:
   ]
 }
 ```
+
 
 ## Cupom
 Método HTTP: GET 📋
