@@ -66,7 +66,7 @@ Endpoint: `/api/Product`
 Parâmetros: Nenhum
 Resposta: Retorna uma lista de todos os produtos, ativos e não ativos
 Exemplo de resposta:
-```
+```json
 {
   "$id": "1",
   "$values": [
@@ -126,7 +126,7 @@ Endpoint: `/api/Cupom`
 Parâmetros: Nenhum
 Resposta: Retorna uma lista de todos os cupons
 Exemplo de resposta:
-```
+```json
 {
   "$id": "1",
   "$values": [
@@ -174,7 +174,7 @@ Endpoint: `/api/Cart/{idUser}`
 Parâmetros: Id do usuário
 Resposta: Retorna o carrinho completo do usuário caso exista
 Exemplo de resposta:
-```
+```json
 {
   "$id": "1",
   "id": 4,
@@ -289,7 +289,7 @@ Endpoint: `/api/Cart/finish/{idUser}`
 Parâmetros: Id do usuário
 Resposta: Retorna o carrinho completo do usuário ja com cupom de desconto aplicado e o JSON para utilizar no front-end
 Exemplo de resposta:
-```
+```json
 {
   "$id": "1",
   "total": 12645,
