@@ -54,6 +54,17 @@ Configure a conexão com o SQL Server no arquivo DataContext.cs:
  }
 ```
 
+## Instalação dos Pacotes NuGet
+
+1. Abra o Package Manager Console no Visual Studio.
+2. Execute o seguinte comando para instalar o Entity Framework Core: `Install-Package Microsoft.EntityFrameworkCore`.
+3. Execute o seguinte comando para instalar o Entity Framework Core SQL Server: `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
+4. Execute o seguinte comando para instalar o Entity Framework Core Design: `Install-Package Microsoft.EntityFrameworkCore.Design`.
+5. Verifique se as dependências foram instaladas corretamente no seu projeto.
+6. Utilize o comando ``` dotnet build ```
+7. Os arquivos para migração no banco de dados, já estão gerados.
+8. Basta utilizar o comando ```dotnet ef database update``` para criar todas tabelas necessárias.
+
 Substitua myServerName, myInstanceName, myDataBase, myUsername e myPassword com as informações de conexão do seu SQL Server.
 
 Execute a API:
@@ -62,6 +73,9 @@ dotnet run
 ```
 
 Acesse a API em seu navegador ou ferramenta de teste de API, usando a URL https://localhost:5298 ou pelo próprio Swagger http://localhost:5298/swagger/index.html
+
+## Documentação da API
+* [Documentação - CARTAPI]([https://github.com/gustavofusco/CartAPI/edit/main/DOC.md])
 
 Como usar
 Para usar a API CARTAPI, consulte a documentação da API para obter informações sobre os endpoints disponíveis e como usá-los.
