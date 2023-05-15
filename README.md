@@ -83,6 +83,10 @@ Para usar a API CARTAPI, consulte a documentação da API para obter informaçõ
 Documentação
 Consulte a documentação da API em DOC.md
 
+## Histórico de commits
+* [Histórico de commits - CARTAPI](https://github.com/gustavofusco/CartAPI/blob/main/CartAPI/historico_commits.txt)
+
+
 Contribuição
 Se você deseja contribuir com a API CARTAPI, por favor, siga estas instruções:
 
